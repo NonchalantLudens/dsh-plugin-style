@@ -1,0 +1,6 @@
+# @fang/dsh-client-ui-skins bundle patch: insert the skin collection into the
+# web plugin roster. Themes appear under Settings → Appearance; decoration CSS
+# activates only while a skin's theme is the active preference.
+- insert:
+    - id: ui-skins-fang
+      name: 'dsh-client-ui-skins'
