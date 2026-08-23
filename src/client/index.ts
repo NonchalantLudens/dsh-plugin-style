@@ -42,11 +42,12 @@ const GRAIN_URI = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000
 const PICKER_CSS = `/* see lib/client.js pickerCss */`
 
 /**
- * Skin-state persistence is four-layered (see lib/client.js): immediate
- * setTheme + delayed retries after tree rebuilds, a body-attribute
- * MutationObserver guard, palette tokens emitted as plain CSS on the skin's
- * body attribute, and intent classification so a slow user switch to a base
- * preference clears the persisted choice while fast reload artifacts do not.
+ * Skin state is fully decoupled from the theme preference: a localStorage
+ * flag drives the body attribute; palette tokens ship as plain CSS scoped to
+ * that attribute (see SKIN_SHEET); the base scheme stays an independent
+ * dimension owned by the theme preference. A skin id arriving through the
+ * preference (official Appearance pick) is adopted into the flag; base
+ * preferences never touch it — nothing automatic can revert the skin.
  */
 
 export function apply(ctx: Context): void {
