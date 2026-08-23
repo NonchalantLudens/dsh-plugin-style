@@ -27,6 +27,7 @@ Style sources: [uiprompt.dev web-styles](https://www.uiprompt.dev/zh/web-styles)
 ## How it works
 
 - **Skin ≠ theme preference.** The stock ThemeRuntime persists only `light/dark/system`; a skin id held there reverts on every settings save or run-mode switch. This plugin keeps the active skin in its own persisted flag driving a `body[data-dsh-skin-<id>]` attribute — nothing automatic can revert it.
+- **The skin owns the scheme.** While a skin is active, the base color scheme locks to the skin's design (`colorScheme`) so dark skins never render light chrome around dark tokens; picking the default style releases the lock and restores your previous preference.
 - **Palette travels with the attribute**: each skin's `--dsw-alias-*` tokens are also emitted as plain CSS on that attribute, so colors survive any client-tree rebuild.
 - **Base scheme is independent**: 跟随系统 / 浅色 / 深色 switch underneath the skin overlay.
 - A skin id picked in the official **Settings → Appearance** selector is adopted automatically.
