@@ -1,4 +1,4 @@
-# @fang/dsh-client-ui-skins
+# dsh-skin-collection
 
 Multi-style skin collection for the [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) web GUI. Each skin registers a theme (selectable under **Settings → Appearance**) plus decoration CSS that activates only while that skin's theme is the active preference.
 
@@ -23,7 +23,7 @@ Style sources: [uiprompt.dev web-styles](https://www.uiprompt.dev/zh/web-styles)
 ```sh
 dsh plugin --profile web add github:NonchalantLudens/dsh-client-ui-skins
 # 或 npm 发布后：
-# dsh plugin --profile web add dsh-client-ui-skins
+# dsh plugin --profile web add dsh-skin-collection
 ```
 
 Restart `dsh web`, then pick **wabi-sabi** in Settings → Appearance.
