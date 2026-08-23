@@ -39,7 +39,7 @@
 dsh plugin --profile web add dsh-skin-collection
 
 # 或直接从 GitHub（lib/ 为预构建产物，安装时不执行任何构建脚本）
-dsh plugin --profile web add github:NonchalantLudens/dsh-client-ui-skins
+dsh plugin --profile web add github:NonchalantLudens/dsh-skin-collection
 ```
 
 重启 `dsh web`。侧边栏底部的「皮肤」按钮负责切换；「默认样式」恢复原生外观。皮肤同样出现在 设置 → 外观 下拉里。

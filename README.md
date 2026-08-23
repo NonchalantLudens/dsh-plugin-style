@@ -39,7 +39,7 @@ Style sources: [uiprompt.dev web-styles](https://www.uiprompt.dev/zh/web-styles)
 dsh plugin --profile web add dsh-skin-collection
 
 # or straight from GitHub (prebuilt lib/ committed — no build scripts run)
-dsh plugin --profile web add github:NonchalantLudens/dsh-client-ui-skins
+dsh plugin --profile web add github:NonchalantLudens/dsh-skin-collection
 ```
 
 Restart `dsh web`. Use the **皮肤** button at the sidebar foot to pick a skin; the default style restores the stock look. Skins also appear under Settings → Appearance.
