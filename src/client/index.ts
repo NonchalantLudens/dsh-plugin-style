@@ -41,6 +41,14 @@ const GRAIN_URI = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000
 /** Picker stylesheet — always active (usable while the default style is on). */
 const PICKER_CSS = `/* see lib/client.js pickerCss */`
 
+/**
+ * Skin-state persistence is four-layered (see lib/client.js): immediate
+ * setTheme + delayed retries after tree rebuilds, a body-attribute
+ * MutationObserver guard, palette tokens emitted as plain CSS on the skin's
+ * body attribute, and intent classification so a slow user switch to a base
+ * preference clears the persisted choice while fast reload artifacts do not.
+ */
+
 export function apply(ctx: Context): void {
   if (typeof document === 'undefined') return
 
