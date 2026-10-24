@@ -3,14 +3,17 @@
  * lib/client.js in the loader's closure-factory format; keep this file in
  * sync when editing).
  *
- * Multi-skin collection with a sidebar manager:
+ * Multi-skin collection with a header picker:
  *  - every skin registers a ThemeDefinition → appears in Settings → Appearance;
  *  - decoration CSS is scoped to body[data-dsh-skin-<id>] and the body
  *    attribute is toggled from `theme/change`, so decorations apply only
  *    while that skin's theme is the active preference;
- *  - a `sidebar.footer.action` entry ("皮肤") opens a menu to switch between
- *    the default style (light/dark/system, no skin) and every registered skin;
- *    switching away from a skin restores the base preference saved before;
+ *  - one 28px icon at the sidebar foot (`sidebar.footer.action`, above the
+ *    Settings row) opens a menu switching between the default style
+ *    (light/dark/system, no skin) and every registered skin; switching away
+ *    from a skin restores the base preference saved before;
+ *  - the same picker plus the foot button's on/off switch sit in
+ *    `settings.general.item`, so the menu survives a hidden foot button;
  *  - all DOM nodes and style tags are created inside ctx.effect(), so plugin
  *    unload removes everything (host also strips data-plugin tags).
  */
@@ -34,6 +37,13 @@ const SKINS: SkinDef[] = [
 
 const PLUGIN_ID = '@fang/dsh-client-ui-skins'
 const BASE_PREF_KEY = 'dsh-skins-base-pref'
+/** Durable skin selection (ui-theme persists only light/dark/system). */
+const ACTIVE_SKIN_KEY = 'dsh-skins-active'
+/**
+ * Whether the sidebar-foot button is shown. Settings → General keeps the same
+ * picker, so hiding the button never strands the feature.
+ */
+const TRIGGER_KEY = 'dsh-skins-footer-button'
 
 /** Paper grain: inline SVG fractal noise, tiled, multiply-blended. */
 const GRAIN_URI = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E\")"
@@ -92,11 +102,19 @@ export function apply(ctx: Context): void {
   ctx.effect(() => { /* grain overlay div */ }, 'ui-skins: grain overlay')
   ctx.effect(() => { /* enso boot fade overlay */ }, 'ui-skins: enso boot fade')
 
-  // Sidebar footer action: skin manager. The shipped implementation lives in
-  // lib/client.js (React via the module table's `require`); this reference
-  // names the registration contract:
+  // Sidebar foot. The shipped implementation lives in lib/client.js (React via
+  // the module table's `require`); this reference names the registration
+  // contracts:
   //   ctx.slots.inject('sidebar.footer.action', () =>
   //     ctx.slots.register({ name: 'sidebar.footer.action', id: 'skins-fang' },
-  //       SkinManagerAction))  // owner props: { wide }
+  //       SkinFooterAction))   // renders nothing while the switch is off
+  //   ctx.slots.inject('settings.general.item', () =>
+  //     ctx.slots.register({ name: 'settings.general.item', order: 5 },
+  //       SkinSettingsRow))    // the same picker
+  //   ctx.slots.inject('settings.general.item', () =>
+  //     ctx.slots.register({ name: 'settings.general.item', order: 6 },
+  //       SkinTriggerRow))     // shows/hides the foot button
+  // The foot is declared by ui-sidebar; its actions stack above Settings and
+  // stay mounted while the settings modal covers the column.
   void PICKER_CSS
 }

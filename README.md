@@ -4,7 +4,7 @@
 [![license](https://img.shields.io/npm/l/dsh-skin-collection)](./LICENSE)
 [![dsh-plugin](https://img.shields.io/badge/topic-dsh--plugin-blue)](https://github.com/topics/dsh-plugin)
 
-Multi-style skin collection for the [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) web GUI. Each skin registers a theme plus scoped decoration CSS; a sidebar picker manages skins and the base color scheme independently — the default style restores the stock UI completely.
+Multi-style skin collection for the [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) web GUI. Each skin registers a theme plus scoped decoration CSS; a small icon at the sidebar foot opens a menu that manages skins and the base color scheme independently — the default style restores the stock UI completely.
 
 English | [简体中文](./README.zh.md)
 
@@ -31,6 +31,8 @@ Style sources: [uiprompt.dev web-styles](https://www.uiprompt.dev/zh/web-styles)
 - **Palette travels with the attribute**: each skin's `--dsw-alias-*` tokens are also emitted as plain CSS on that attribute, so colors survive any client-tree rebuild.
 - **Base scheme is independent**: 跟随系统 / 浅色 / 深色 switch underneath the skin overlay.
 - A skin id picked in the official **Settings → Appearance** selector is adopted automatically.
+- **Where the picker lives.** One 28px circle at the sidebar foot (`sidebar.footer.action`), beside the Settings row rather than stacked above it: the wide column gets the circle, the rail gets the same 36px box as every other rail control. It sits above Settings and stays mounted while the settings modal is open, so it is reachable in every desktop state. The icon takes the brand color while a skin is active.
+- **Redundant way in, and an off switch.** **Settings → General** carries the same picker plus a switch that hides the foot button; hiding it never strands the feature, because the settings row keeps the menu.
 
 ## Install
 
@@ -42,7 +44,7 @@ dsh plugin --profile web add dsh-skin-collection
 dsh plugin --profile web add github:NonchalantLudens/dsh-skin-collection
 ```
 
-Restart `dsh web`. Use the **皮肤** button at the sidebar foot to pick a skin; the default style restores the stock look. Skins also appear under Settings → Appearance.
+Restart `dsh web`. Click the gear icon at the sidebar foot to pick a skin; the default style restores the stock look. Skins also appear under Settings → Appearance. Settings → General carries the same picker plus a switch that shows or hides the foot button.
 
 No install-time code execution: the package ships prebuilt artifacts and declares no build scripts.
 

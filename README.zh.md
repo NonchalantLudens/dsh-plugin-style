@@ -4,7 +4,7 @@
 [![license](https://img.shields.io/npm/l/dsh-skin-collection)](./LICENSE)
 [![dsh-plugin](https://img.shields.io/badge/topic-dsh--plugin-blue)](https://github.com/topics/dsh-plugin)
 
-[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（dsh）Web 界面的多风格皮肤合集。每个皮肤注册一套主题外加作用域装饰 CSS；侧边栏选择器独立管理皮肤与基础配色——选「默认样式」即完全恢复原生外观。
+[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（dsh）Web 界面的多风格皮肤合集。每个皮肤注册一套主题外加作用域装饰 CSS；侧边栏底部的小图标打开菜单，独立管理皮肤与基础配色——选「默认样式」即完全恢复原生外观。
 
 [English](./README.md) | 简体中文
 
@@ -31,6 +31,8 @@
 - **配色随属性走**：每个皮肤的 `--dsw-alias-*` 令牌同时以普通 CSS 形式输出到该属性上，客户端插件树重建后依然生效。
 - **基础配色独立**：跟随系统 / 浅色 / 深色 只切换皮肤之下的底色方案。
 - 在官方 **设置 → 外观** 里选择的皮肤 id 会被自动收编。
+- **入口在哪**：侧边栏底部是 28px 圆形小图标（`sidebar.footer.action`），与设置行并排而不叠在它上面：宽栏用圆形图标，折叠成窄轨时换成和其他窄轨控件一致的 36px 方块。它在设置行之上，且设置弹窗打开时仍然挂载，所以桌面版任何状态都点得到。皮肤激活时图标转为品牌色。
+- **备用入口与关闭开关**：**设置 → 通用** 里是同一个选择器，外加一个隐藏底部按钮的开关。关掉底部按钮不会让功能失联，因为设置行里保留着同一个菜单。
 
 ## 安装
 
@@ -42,7 +44,7 @@ dsh plugin --profile web add dsh-skin-collection
 dsh plugin --profile web add github:NonchalantLudens/dsh-skin-collection
 ```
 
-重启 `dsh web`。侧边栏底部的「皮肤」按钮负责切换；「默认样式」恢复原生外观。皮肤同样出现在 设置 → 外观 下拉里。
+重启 `dsh web`。点侧边栏底部的齿轮图标切换皮肤；「默认样式」恢复原生外观。皮肤同样出现在 设置 → 外观 下拉里。设置 → 通用 里也有同一个选择器和显示/隐藏该按钮的开关。
 
 安装期零代码执行：包内全部是预构建产物，未声明任何构建脚本。
 
