@@ -1,7 +1,7 @@
-# dsh-skin-collection
+# dsh-plugin-style
 
-[![npm version](https://img.shields.io/npm/v/dsh-skin-collection)](https://www.npmjs.com/package/dsh-skin-collection)
-[![license](https://img.shields.io/npm/l/dsh-skin-collection)](./LICENSE)
+[![npm version](https://img.shields.io/npm/v/dsh-plugin-style)](https://www.npmjs.com/package/dsh-plugin-style)
+[![license](https://img.shields.io/npm/l/dsh-plugin-style)](./LICENSE)
 [![dsh-plugin](https://img.shields.io/badge/topic-dsh--plugin-blue)](https://github.com/topics/dsh-plugin)
 
 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)（dsh）Web 界面的多风格皮肤合集。每个皮肤注册一套主题外加作用域装饰 CSS；侧边栏底部的小图标打开菜单，独立管理皮肤与基础配色——选「默认样式」即完全恢复原生外观。
@@ -38,10 +38,10 @@
 
 ```sh
 # 从 npm
-dsh plugin --profile web add dsh-skin-collection
+dsh plugin --profile web add dsh-plugin-style
 
 # 或直接从 GitHub（lib/ 为预构建产物，安装时不执行任何构建脚本）
-dsh plugin --profile web add github:NonchalantLudens/dsh-skin-collection
+dsh plugin --profile web add github:NonchalantLudens/dsh-plugin-style
 ```
 
 重启 `dsh web`。点侧边栏底部的齿轮图标切换皮肤；「默认样式」恢复原生外观。皮肤同样出现在 设置 → 外观 下拉里。设置 → 通用 里也有同一个选择器和显示/隐藏该按钮的开关。

@@ -1,7 +1,7 @@
-# dsh-skin-collection
+# dsh-plugin-style
 
-[![npm version](https://img.shields.io/npm/v/dsh-skin-collection)](https://www.npmjs.com/package/dsh-skin-collection)
-[![license](https://img.shields.io/npm/l/dsh-skin-collection)](./LICENSE)
+[![npm version](https://img.shields.io/npm/v/dsh-plugin-style)](https://www.npmjs.com/package/dsh-plugin-style)
+[![license](https://img.shields.io/npm/l/dsh-plugin-style)](./LICENSE)
 [![dsh-plugin](https://img.shields.io/badge/topic-dsh--plugin-blue)](https://github.com/topics/dsh-plugin)
 
 Multi-style skin collection for the [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) web GUI. Each skin registers a theme plus scoped decoration CSS; a small icon at the sidebar foot opens a menu that manages skins and the base color scheme independently — the default style restores the stock UI completely.
@@ -38,10 +38,10 @@ Style sources: [uiprompt.dev web-styles](https://www.uiprompt.dev/zh/web-styles)
 
 ```sh
 # from npm
-dsh plugin --profile web add dsh-skin-collection
+dsh plugin --profile web add dsh-plugin-style
 
 # or straight from GitHub (prebuilt lib/ committed — no build scripts run)
-dsh plugin --profile web add github:NonchalantLudens/dsh-skin-collection
+dsh plugin --profile web add github:NonchalantLudens/dsh-plugin-style
 ```
 
 Restart `dsh web`. Click the gear icon at the sidebar foot to pick a skin; the default style restores the stock look. Skins also appear under Settings → Appearance. Settings → General carries the same picker plus a switch that shows or hides the foot button.
