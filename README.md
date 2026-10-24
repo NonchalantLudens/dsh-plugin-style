@@ -27,9 +27,9 @@ Style sources: [uiprompt.dev web-styles](https://www.uiprompt.dev/zh/web-styles)
 ## How it works
 
 - **Skin ≠ theme preference.** The stock ThemeRuntime persists only `light/dark/system`; a skin id held there reverts on every settings save or run-mode switch. This plugin keeps the active skin in its own persisted flag driving a `body[data-dsh-skin-<id>]` attribute — nothing automatic can revert it.
-- **The skin owns the scheme.** While a skin is active, the base color scheme locks to the skin's design (`colorScheme`) so dark skins never render light chrome around dark tokens; picking the default style releases the lock and restores your previous preference.
+- **The skin sets the opening scheme.** Picking a skin moves the preference to the skin's design scheme once, so dark skins never render light chrome around dark tokens. After that your own choice stands: the menu's 外观 group keeps switching 跟随系统 / 浅色 / 深色 while a skin is on. **关闭皮肤** in the 皮肤 group restores the stock look.
 - **Palette travels with the attribute**: each skin's `--dsw-alias-*` tokens are also emitted as plain CSS on that attribute, so colors survive any client-tree rebuild.
-- **Base scheme is independent**: 跟随系统 / 浅色 / 深色 switch underneath the skin overlay.
+- **The menu has two groups**: 外观 (跟随系统 / 浅色 / 深色 — the stock preference, nothing else) and 皮肤 (关闭皮肤 first, then every skin).
 - A skin id picked in the official **Settings → Appearance** selector is adopted automatically.
 - **Where the picker lives.** One 28px circle at the sidebar foot (`sidebar.footer.action`), beside the Settings row rather than stacked above it: the wide column gets the circle, the rail gets the same 36px box as every other rail control. It sits above Settings and stays mounted while the settings modal is open, so it is reachable in every desktop state. The icon takes the brand color while a skin is active.
 - **Redundant way in, and an off switch.** **Settings → General** carries the same picker plus a switch that hides the foot button; hiding it never strands the feature, because the settings row keeps the menu.
